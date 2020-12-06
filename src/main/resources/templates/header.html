@@ -10,26 +10,24 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="/css/base.css">
 </head>
 
 <body>
     <nav class="light-blue darken-3">
         <div class="nav-wrapper">
             <a href="/" class="brand-logo logo">
-                <img class="logo__pic" src="images/logo.png">
+                <img class="logo__pic" src="/images/logo.png">
             </a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger">
                 <i class="material-icons">menu</i>
             </a>
             <ul class="right hide-on-med-and-down">
-                <li><a href="about.html">About</a></li>
-                <li><a href="https://www.codeurjc.es/mastercloudapps">Master Cloud Apps</a></li>
+                {{>menuLinks}}
             </ul>
         </div>
     </nav>
     <ul class="sidenav" id="mobile-demo">
-        <li><a href="about.html">About</a></li>
-        <li><a href="https://www.codeurjc.es/mastercloudapps">Master Cloud Apps</a></li>
+        {{>menuLinks}}
     </ul>
 <div class="container">
