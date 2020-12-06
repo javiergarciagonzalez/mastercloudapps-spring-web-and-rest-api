@@ -16,9 +16,16 @@ public class BookController {
     }
 
     @GetMapping("/")
-    public String getMethodName(Model model) {
+    public String getBasePage(Model model) {
         model.addAttribute("books", bookService.findAll());
 
         return "base";
+    }
+
+
+    @GetMapping("book/new")
+    public String newBook(Model model) {
+        model.addAttribute("hey", "hoi");
+        return "newBook";
     }
 }
