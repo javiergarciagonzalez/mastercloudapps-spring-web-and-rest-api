@@ -5,6 +5,10 @@ body {
     flex-direction: column;
 }
 
+footer {
+    padding-bottom: 1rem;
+}
+
 .container {
     flex: 1 0 auto;
 }
@@ -20,4 +24,25 @@ body {
 
 .logo__pic {
     width: 75%;
+}
+
+.title {
+    font-size: 2rem;
+    margin: .5rem 0 .5rem 0;
+}
+
+/* Override Materialize CSS default styles */
+/* Normalize margins for paragraphs within form elements */
+form p {
+    margin: 0 0 .25rem 0;
+}
+
+.row {
+    margin-bottom: 0;
+}
+
+/* label underline focus color */
+.input-field input[type=text]:focus {
+    border-bottom: 1px solid #000;
+    box-shadow: 0 1px 0 0 #000;
 }

@@ -2,6 +2,8 @@ package es.codeurjc.springwebrestapi.controllers;
 
 import es.codeurjc.springwebrestapi.services.BookService;
 
+import java.util.ArrayList;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,7 +27,12 @@ public class BookController {
 
     @GetMapping("/book/new")
     public String newBook(Model model) {
-        model.addAttribute("hey", "hoi");
-        return "newBook";
+        ArrayList<String> publishers = new ArrayList<String>();
+        publishers.add("Red circle");
+        publishers.add("Blue circle");
+        publishers.add("Green circle");
+        publishers.add("Yellow circle");
+        model.addAttribute("publishers", publishers);
+        return "newBook/base";
     }
 }
