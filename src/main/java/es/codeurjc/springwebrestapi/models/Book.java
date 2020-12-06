@@ -5,11 +5,11 @@ public class Book {
     private Long id;
     private String title;
     private String summary;
-    private Author author;
+    private String author;
     private String publisher;
-    private int publicationDate;
+    private String publicationDate;
 
-    public Book(String title, String summary, Author author, String publisher ,int publicationDate) {
+    public Book(String title, String summary, String author, String publisher , String publicationDate) {
         this.title = title;
         this.summary = summary;
         this.author = author;

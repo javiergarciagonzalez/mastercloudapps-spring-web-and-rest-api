@@ -1,40 +1,40 @@
 {{>header/base}}
 
 <h2 class="title">Upload a new book:</h2>
-<form class="col s12" action="/post/new" method="post" enctype="multipart/form-data">
+<form class="col s12" action="/book/new" method="post" enctype="multipart/form-data">
     <div class="row">
         <div class="input-field col s6">
             <p>Title: </p>
-            <input type='text' name='title' value='{{#user}}{{.}}{{/user}}' required />
+            <input type="text" name="title" required />
         </div>
     </div>
     <div class="row">
-        <div class="input-field col s3">
+        <div class="input-field col s6">
             <p>Author:</p>
-            <input type='text' name='name' placeholder="Name" required />
-            <input type='text' name='surname' placeholder="Last name" required />
+            <input type="text" name="author" placeholder="Author"s name" required />
         </div>
     </div>
     <div class="row">
         <div class="input-field col s3">
             <p>Publication date:</p>
-            <input name='text' type="date" />
+            <input name="publicationDate" type="date" />
         </div>
     </div>
     <div class="row">
         <div class="input-field col s9">
             <p>Summary:</p>
-            <textarea name='text' maxlength="240" placeholder="Max 240 characters."></textarea>
+            <textarea name="summary" maxlength="240" placeholder="Max 240 characters."></textarea>
         </div>
     </div>
 
     {{>newBook/publisher}}
     {{>newBook/imageUploader}}
 
-    <button class="btn waves-effect waves-light light-blue darken-3" type="submit" name="action">
+    <button class="btn waves-effect waves-light light-blue darken-3" type="submit">
         <span>Submit</span>
         <i class="material-icons right">send</i>
     </button>
+    {{>atoms/back_button}}
 </form>
 
 {{>footer}}

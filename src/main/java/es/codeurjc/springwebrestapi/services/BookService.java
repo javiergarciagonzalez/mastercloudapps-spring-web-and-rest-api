@@ -8,7 +8,6 @@ import java.util.concurrent.atomic.AtomicLong;
 import org.springframework.stereotype.Service;
 
 import es.codeurjc.springwebrestapi.models.Book;
-import es.codeurjc.springwebrestapi.models.Author;
 
 @Service
 public class BookService {
@@ -17,7 +16,7 @@ public class BookService {
     private AtomicLong nextId = new AtomicLong();
 
     public BookService() {
-        save(new Book("super book", "Some description", new Author("Javier", "Garcia"), "Super Editorial", 2020));
+        save(new Book("super book", "Some description", "Javier García", "Super Editorial", "2020-12-06"));
     }
 
     public Collection<Book> findAll() {
