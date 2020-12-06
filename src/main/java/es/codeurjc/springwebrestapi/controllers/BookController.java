@@ -23,7 +23,7 @@ public class BookController {
     }
 
 
-    @GetMapping("book/new")
+    @GetMapping("/book/new")
     public String newBook(Model model) {
         model.addAttribute("hey", "hoi");
         return "newBook";
