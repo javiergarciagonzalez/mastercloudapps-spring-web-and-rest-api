@@ -1,8 +1,7 @@
 package es.codeurjc.springwebrestapi.controllers;
 
 import es.codeurjc.springwebrestapi.services.BookService;
-
-import java.util.ArrayList;
+import es.codeurjc.springwebrestapi.services.PublisherService;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,14 +11,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class BookController {
 
     private BookService bookService;
+    private PublisherService publisherService;
 
-    public BookController(BookService bookService) {
+    public BookController(BookService bookService, PublisherService publisherService) {
         this.bookService = bookService;
+        this.publisherService = publisherService;
     }
 
     @GetMapping("/")
     public String getBasePage(Model model) {
-        model.addAttribute("books", bookService.findAll());
+        model.addAttribute("books", this.bookService.findAll());
 
         return "base";
     }
@@ -27,12 +28,10 @@ public class BookController {
 
     @GetMapping("/book/new")
     public String newBook(Model model) {
-        ArrayList<String> publishers = new ArrayList<String>();
-        publishers.add("Red circle");
-        publishers.add("Blue circle");
-        publishers.add("Green circle");
-        publishers.add("Yellow circle");
-        model.addAttribute("publishers", publishers);
+
+        model.addAttribute("publishers", this.publisherService.findAll());
         return "newBook/base";
     }
+
+
 }
