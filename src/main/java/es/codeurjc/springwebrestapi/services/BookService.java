@@ -20,7 +20,6 @@ public class BookService {
     }
 
     public Collection<Book> findAll() {
-
         return books.values();
     }
 
