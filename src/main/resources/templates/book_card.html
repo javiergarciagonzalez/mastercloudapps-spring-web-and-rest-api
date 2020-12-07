@@ -1,0 +1,24 @@
+<li>
+    <div class="col s12 m3">
+        <div class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+                {{#imageName}}
+                    <img class="activator" src="/book/{{id}}/image">
+                {{/imageName}}
+                {{^imageName}}
+                    <img class="activator" src="images/default_book.jpg">
+                {{/imageName}}
+            </div>
+            <div class="card-content">
+                <span class="card-title activator grey-text text-darken-4">{{title}}</span>
+                <a class="btn-flat waves-effect waves-teal" href="/book/{{id}}">
+                    Open book
+                </a>
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">{{title}}<i class="material-icons right">close</i></span>
+              <p>{{summary}}</p>
+            </div>
+          </div>
+    </div>
+</li>

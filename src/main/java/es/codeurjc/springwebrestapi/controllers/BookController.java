@@ -57,6 +57,13 @@ public class BookController {
         return "saved_book";
     }
 
+    @GetMapping("/book/{id}")
+    public String getImage(@PathVariable int id, Model model) {
+        Book book = bookService.findById(id);
+        model.addAttribute("book", book);
+        return "show_book";
+    }
+
     @GetMapping("/book/{id}/image")
     public ResponseEntity<Object> getImage(@PathVariable int id) throws MalformedURLException {
         return imageService.createResponseFromImage(BOOKS_FOLDER, id);

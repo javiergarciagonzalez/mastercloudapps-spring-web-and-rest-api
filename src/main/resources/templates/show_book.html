@@ -1,0 +1,21 @@
+{{>header/base}}
+    <h2>{{book.title}}</h2>
+    <div class="pic"></div>
+    <div class="author">
+        <p class="strong">Author: {{book.author}}</p>
+    </div>
+    <div class="divider"></div>
+    <div class="summary">
+        <p class="strong">Summary:</p>
+        <p>{{book.summary}}</p>
+    </div>
+    <div class="divider"></div>
+    <div class="publisher">
+        <p class="strong">Publisher: {{book.publisher}}</p>
+    </div>
+    <div class="divider"></div>
+    <div class="publication-date">
+        <p class="strong">Publication date: {{book.publicationDate}}</p>
+    </div>
+    {{>atoms/back_button}}
+{{>footer}}
