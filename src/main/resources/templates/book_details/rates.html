@@ -1,0 +1,11 @@
+<div class="row">
+    <div class="input-field col s5">
+        <p> Book rating: {{book.rating}}/5 </p>
+        <form action="/book/{{book.id}}/rate" method="POST">
+            <p class="range-field">
+                <input type="range" name="rating" value="{{book.rating}}" min="0" max="5" />
+            </p>
+            <button type="submit" class="btn">Submit new rate</button>
+        </form>
+    </div>
+</div>

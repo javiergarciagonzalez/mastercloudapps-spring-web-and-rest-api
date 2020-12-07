@@ -9,6 +9,7 @@ public class Book {
     private String publisher;
     private String publicationDate;
     private String imageName;
+    private Integer rating;
 
     public Book(String title, String summary, String author, String publisher , String publicationDate) {
         this.title = title;
@@ -16,6 +17,7 @@ public class Book {
         this.author = author;
         this.publisher = publisher;
         this.publicationDate = publicationDate;
+        this.rating = 0;
     }
 
     public void setId(Long id) {
@@ -34,8 +36,19 @@ public class Book {
         this.imageName = "/images/" + path + ("/image-" + this.id + ".jpg");
     }
 
+    public void setRating(Integer rating) {
+        this.rating = rating;
+    }
+
     @Override
     public String toString() {
-        return "Book: [id="+id+", title="+title+", summary="+summary+", author="+author.toString()+", publisher="+publisher+", publicationDate="+publicationDate+", imageName:"+imageName+"]";
+        return
+            "Book: [id="+id+
+            ", title="+title+
+            ", summary="+summary+
+            ", author="+author.toString()+
+            ", publisher="+publisher+
+            ", publicationDate="+publicationDate+
+            ", rating:"+rating.toString()+"]";
     }
 }

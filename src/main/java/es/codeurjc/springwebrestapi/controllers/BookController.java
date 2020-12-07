@@ -43,7 +43,7 @@ public class BookController {
     public String gerNewBookPage(Model model) {
 
         model.addAttribute("publishers", this.publisherService.findAll());
-        return "newBook/base";
+        return "new_book/base";
     }
 
     @PostMapping("/book/new")
@@ -58,15 +58,23 @@ public class BookController {
     }
 
     @GetMapping("/book/{id}")
-    public String getImage(@PathVariable int id, Model model) {
+    public String getImage( Model model, @PathVariable int id) {
         Book book = bookService.findById(id);
         model.addAttribute("book", book);
-        return "show_book";
+        return "book_details/base";
     }
 
     @GetMapping("/book/{id}/image")
     public ResponseEntity<Object> getImage(@PathVariable int id) throws MalformedURLException {
         return imageService.createResponseFromImage(BOOKS_FOLDER, id);
+    }
+
+    @PostMapping("book/{id}/rate")
+    public String rateBook(@PathVariable long id, Model model, Integer rating) {
+        Book book = bookService.findById(id);
+        book.setRating(rating);
+        model.addAttribute("book", book);
+        return "book_details/base";
     }
 
 }
