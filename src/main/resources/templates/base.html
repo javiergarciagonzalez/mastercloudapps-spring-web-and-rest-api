@@ -1,20 +1,38 @@
 {{>header/base}}
 
-<h1>Books</h1>
-<ul>
-    {{#books}}
-        <li>
-            <a class="btn-flat waves-effect waves-teal" href="/book/{{id}}">
-                {{title}}
-            </a>
-        </li>
-    {{/books}}
-</ul>
+<div class="section">
+    <h1>Books</h1>
+    <ul class="row">
+        {{#books}}
+            <li>
+                <div class="col s12 m3">
+                    <div class="card small">
+                        <div class="card-image waves-effect waves-block waves-light">
+                          <img class="activator" src="images/default_book.jpg">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">{{title}}</span>
+                            <a class="btn-flat waves-effect waves-teal" href="/book/{{id}}">
+                                Open book
+                            </a>
+                        </div>
+                        <div class="card-reveal">
+                          <span class="card-title grey-text text-darken-4">{{title}}<i class="material-icons right">close</i></span>
+                          <p>{{summary}}</p>
+                        </div>
+                      </div>
+                </div>
+            </li>
+        {{/books}}
+    </ul>
+</div>
 
-<h2>Wanna upload a book?</h2>
-<a class="btn waves-effect waves-teal light-blue darken-3" href="/book/new">
-    <span>Go to book uploader</span>
-    <i class="material-icons right">arrow_forward</i>
-</a>
+<div class="section">
+    <h2 class="title">Wanna upload a book?</h2>
+    <a class="btn waves-effect waves-teal light-blue darken-3" href="/book/new">
+        <span>Go to book uploader</span>
+        <i class="material-icons right">arrow_forward</i>
+    </a>
+</div>
 
 {{>footer}}
