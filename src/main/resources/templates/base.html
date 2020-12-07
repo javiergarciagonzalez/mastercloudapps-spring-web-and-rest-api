@@ -8,7 +8,12 @@
                 <div class="col s12 m3">
                     <div class="card small">
                         <div class="card-image waves-effect waves-block waves-light">
-                          <img class="activator" src="images/default_book.jpg">
+                            {{#imageName}}
+                                <img class="activator" src="/book/{{id}}/image">
+                            {{/imageName}}
+                            {{^imageName}}
+                                <img class="activator" src="images/default_book.jpg">
+                            {{/imageName}}
                         </div>
                         <div class="card-content">
                             <span class="card-title activator grey-text text-darken-4">{{title}}</span>

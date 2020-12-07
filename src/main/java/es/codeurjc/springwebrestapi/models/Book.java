@@ -8,6 +8,7 @@ public class Book {
     private String author;
     private String publisher;
     private String publicationDate;
+    private String imageName;
 
     public Book(String title, String summary, String author, String publisher , String publicationDate) {
         this.title = title;
@@ -29,8 +30,12 @@ public class Book {
         return this.id;
     }
 
+    public void addCustomImageName(String path) {
+        this.imageName = "/images/" + path + ("/image-" + this.id + ".jpg");
+    }
+
     @Override
     public String toString() {
-        return "Book: [id="+id+", title="+title+", summary="+summary+", author="+author.toString()+", publisher="+publisher+", publicationDate="+publicationDate+"]";
+        return "Book: [id="+id+", title="+title+", summary="+summary+", author="+author.toString()+", publisher="+publisher+", publicationDate="+publicationDate+", imageName:"+imageName+"]";
     }
 }

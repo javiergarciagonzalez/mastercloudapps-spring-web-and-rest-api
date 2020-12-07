@@ -6,21 +6,25 @@ import es.codeurjc.springwebrestapi.services.ImageService;
 import es.codeurjc.springwebrestapi.services.PublisherService;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.multipart.MultipartFile;
+
 
 @Controller
 public class BookController {
 
     private static final String BOOKS_FOLDER = "books";
 
-    private BookService bookService;
-    private PublisherService publisherService;
-    private ImageService imageService;
+    private final BookService bookService;
+    private final PublisherService publisherService;
+    private final ImageService imageService;
 
     public BookController(BookService bookService, PublisherService publisherService, ImageService imageService) {
         this.bookService = bookService;
@@ -36,7 +40,7 @@ public class BookController {
     }
 
     @GetMapping("/book/new")
-    public String newBook(Model model) {
+    public String gerNewBookPage(Model model) {
 
         model.addAttribute("publishers", this.publisherService.findAll());
         return "newBook/base";
@@ -46,9 +50,16 @@ public class BookController {
     public String newBook(Model model, Book book, MultipartFile image) throws IOException {
 
         bookService.save(book);
+        book.addCustomImageName(BOOKS_FOLDER);
         model.addAttribute("title", book.getTitle());
         imageService.saveImage(BOOKS_FOLDER, book.getId(), image);
 
         return "saved_book";
     }
+
+    @GetMapping("/book/{id}/image")
+    public ResponseEntity<Object> getImage(@PathVariable int id) throws MalformedURLException {
+        return imageService.createResponseFromImage(BOOKS_FOLDER, id);
+    }
+
 }
