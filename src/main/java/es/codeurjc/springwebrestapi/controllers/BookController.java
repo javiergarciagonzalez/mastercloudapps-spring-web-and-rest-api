@@ -50,14 +50,13 @@ public class BookController {
 
     @GetMapping("/book/new")
     public String gerNewBookPage(Model model) {
-
         model.addAttribute("publishers", this.publisherService.findAll());
+
         return "new_book/base";
     }
 
     @PostMapping("/book/new")
     public String newBook(Model model, Book book, MultipartFile image) throws IOException {
-
         bookService.save(book);
         book.addCustomImageName(BOOKS_FOLDER);
         model.addAttribute("title", book.getTitle());
@@ -90,6 +89,7 @@ public class BookController {
         model.addAttribute("book", book);
         model.addAttribute("comments", comments);
         model.addAttribute("userSession", commentService.getSessionUser(session));
+
         return "book_details/base";
     }
 

@@ -20,7 +20,7 @@ public class CommentService {
     private AtomicLong nextId = new AtomicLong();
 
     public CommentService() {
-        this.save(new Comment("asdsad", 213, new User("Javier", "garcia"), 0));
+        this.save(new Comment("asdsad", 3, new User("Javier", "garcia"), 0));
     }
 
     public void save(Comment comment) {
