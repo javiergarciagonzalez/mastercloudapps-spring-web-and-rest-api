@@ -4,15 +4,15 @@
     <form class="col s12" action="/comment/new/{{book.id}}" method="POST">
         <div class="row">
             <div class="input-field col s4">
-                <input id="first_name" type="text" name="name" value="{{userSession.name}}" class="validate">
+                <input id="first_name" type="text" name="name" value="{{userSession.name}}" class="validate" required>
                 <label for="first_name">First Name</label>
             </div>
             <div class="input-field col s5">
-                <input id="last_name" type="text" name="lastName" value="{{userSession.lastName}}" class="validate">
+                <input id="last_name" type="text" name="lastName" value="{{userSession.lastName}}" class="validate" required>
                 <label for="last_name">Last Name</label>
             </div>
             <div class="input-field col s3">
-                <select id="rating" name="rating">
+                <select id="rating" name="rating" required>
                     <option value="" disabled selected>Rate this book</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -24,7 +24,7 @@
         </div>
         <div class="row">
             <div class="input-field col s12">
-                <textarea id="textarea" name="content" maxlength="100" class="materialize-textarea"></textarea>
+                <textarea id="textarea" name="content" maxlength="100" class="materialize-textarea" required></textarea>
                 <label for="textarea">Comment</label>
             </div>
         </div>
