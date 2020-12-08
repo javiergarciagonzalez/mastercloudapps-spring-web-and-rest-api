@@ -42,12 +42,12 @@ footer {
 
 .book__rating {
     align-items: center;
-    color: #8b8e4a;
+    color: #5a5a5a;
     display: flex;
     font-size: 1.75rem;
     position: absolute;
     right: .5rem;
-    text-shadow: 0px 0px 7px #FFEB3B;
+    text-shadow: 0px 0px 10px #ffffff;
     top: .25rem;
 }
 
