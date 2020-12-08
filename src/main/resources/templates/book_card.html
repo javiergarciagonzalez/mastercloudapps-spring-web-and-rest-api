@@ -1,20 +1,20 @@
 <li>
-    <div class="col s12 m3">
-        <div class="card">
+    <div class="col s12 m4">
+        <div class="card book-item">
             <div class="card-image waves-effect waves-block waves-light">
-                {{#imageName}}
+                {{#hasCustomImage}}
                     <img class="activator" src="/book/{{id}}/image">
-                {{/imageName}}
-                {{^imageName}}
+                {{/hasCustomImage}}
+                {{^hasCustomImage}}
                     <img class="activator" src="images/default_book.jpg">
-                {{/imageName}}
+                {{/hasCustomImage}}
                 <div class="book__rating">
                     {{rating}}<i class="material-icons book__star">star</i>
                 </div>
             </div>
             <div class="card-content">
                 <span class="card-title activator grey-text text-darken-4">{{title}}</span>
-                <a class="btn-flat waves-effect waves-teal" href="/book/{{id}}">
+                <a class="btn waves-effect waves-teal light-blue darken-3" href="/book/{{id}}">
                     Open book
                 </a>
             </div>
