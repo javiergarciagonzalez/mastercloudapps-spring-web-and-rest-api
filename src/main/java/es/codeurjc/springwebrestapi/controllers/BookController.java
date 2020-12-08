@@ -56,7 +56,7 @@ public class BookController {
     public String newBook(Model model, Book book, MultipartFile image) throws IOException {
         bookService.save(book);
         if (image.getSize() != 0) {
-            book.setHasCustomImage(true);
+            bookService.itsOwnImage(book);
             imageService.saveImage(BOOKS_FOLDER, book.getId(), image);
         }
 
