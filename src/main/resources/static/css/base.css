@@ -36,6 +36,10 @@ footer {
     font-weight: bold;
 }
 
+.back {
+    margin-top: 150px;
+}
+
 /* Override Materialize CSS default styles */
 /* Normalize margins for paragraphs within form elements */
 form p {

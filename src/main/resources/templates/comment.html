@@ -1,0 +1,13 @@
+<h3>Comments ({{commentsCount}})</h3>
+
+<ul>
+    {{#comments}}
+    <li>
+        {{content}}
+        {{user}}
+        {{publishedDate}}
+
+        <a href="/comment/delete/{{id}}/{{book.id}}">Delete comment</a>
+    </li>
+    {{/comments}}
+</ul>

@@ -1,12 +1,15 @@
 package es.codeurjc.springwebrestapi.controllers;
 
 import es.codeurjc.springwebrestapi.models.Book;
+import es.codeurjc.springwebrestapi.models.Comment;
 import es.codeurjc.springwebrestapi.services.BookService;
+import es.codeurjc.springwebrestapi.services.CommentService;
 import es.codeurjc.springwebrestapi.services.ImageService;
 import es.codeurjc.springwebrestapi.services.PublisherService;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.util.List;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -17,6 +20,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.multipart.MultipartFile;
 
 
+
 @Controller
 public class BookController {
 
@@ -25,11 +29,13 @@ public class BookController {
     private final BookService bookService;
     private final PublisherService publisherService;
     private final ImageService imageService;
+    private final CommentService commentService;
 
-    public BookController(BookService bookService, PublisherService publisherService, ImageService imageService) {
+    public BookController(BookService bookService, PublisherService publisherService, ImageService imageService, CommentService commentService) {
         this.bookService = bookService;
         this.publisherService = publisherService;
         this.imageService = imageService;
+        this.commentService = commentService;
     }
 
     @GetMapping("/")
@@ -60,7 +66,11 @@ public class BookController {
     @GetMapping("/book/{id}")
     public String getImage( Model model, @PathVariable int id) {
         Book book = bookService.findById(id);
+        List<Comment> comments = commentService.findAllCommentsPerBook(id);
         model.addAttribute("book", book);
+        model.addAttribute("comments", comments);
+        model.addAttribute("commentsCount", comments.size());
+
         return "book_details/base";
     }
 
