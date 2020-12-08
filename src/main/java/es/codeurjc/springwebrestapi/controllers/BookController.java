@@ -69,7 +69,6 @@ public class BookController {
         List<Comment> comments = commentService.findAllCommentsPerBook(id);
         model.addAttribute("book", book);
         model.addAttribute("comments", comments);
-        model.addAttribute("commentsCount", comments.size());
 
         return "book_details/base";
     }
@@ -86,7 +85,6 @@ public class BookController {
         book.setRating(rating);
         model.addAttribute("book", book);
         model.addAttribute("comments", comments);
-        model.addAttribute("commentsCount", comments.size());
         return "book_details/base";
     }
 

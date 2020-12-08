@@ -33,7 +33,6 @@ public class CommentController {
         List<Comment> allComments = commentService.findAllCommentsPerBook(bookId);
         model.addAttribute("book", book);
         model.addAttribute("comments", allComments);
-        model.addAttribute("commentsCount", allComments.size());
 
         return "book_details/base";
     }
@@ -45,7 +44,6 @@ public class CommentController {
         commentService.deleteById(id);
         model.addAttribute("book", book);
         model.addAttribute("comments", allComments);
-        model.addAttribute("commentsCount", allComments.size());
 
         return "book_details/base";
     }
