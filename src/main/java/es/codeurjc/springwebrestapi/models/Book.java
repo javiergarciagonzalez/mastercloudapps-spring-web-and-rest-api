@@ -1,5 +1,8 @@
 package es.codeurjc.springwebrestapi.models;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Book {
 
     private Long id;
@@ -8,16 +11,25 @@ public class Book {
     private String author;
     private String publisher;
     private String publicationDate;
-    private String imageName;
     private Integer rating;
+    private Boolean hasCustomImage;
 
-    public Book(String title, String summary, String author, String publisher , String publicationDate) {
+    @JsonCreator
+    public Book(
+        @JsonProperty("title") String title,
+        @JsonProperty("summary") String summary,
+        @JsonProperty("author") String author,
+        @JsonProperty("publisher") String publisher,
+        @JsonProperty("publicationDate") String publicationDate,
+        @JsonProperty("rating") Integer rating
+    ) {
         this.title = title;
         this.summary = summary;
         this.author = author;
         this.publisher = publisher;
         this.publicationDate = publicationDate;
-        this.rating = 0;
+        this.rating = rating;
+        this.hasCustomImage = false;
     }
 
     public void setId(Long id) {
@@ -32,8 +44,16 @@ public class Book {
         return this.id;
     }
 
-    public void addCustomImageName(String path) {
-        this.imageName = "/images/" + path + ("/image-" + this.id + ".jpg");
+    public void setHasCustomImage(Boolean value) {
+        this.hasCustomImage = value;
+    }
+
+    public Boolean getHasCustomImage() {
+        return hasCustomImage;
+    }
+
+    public Integer getRating() {
+        return this.rating;
     }
 
     public void setRating(Integer rating) {

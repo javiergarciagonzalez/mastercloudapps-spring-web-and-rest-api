@@ -2,7 +2,6 @@ package es.codeurjc.springwebrestapi.controllers;
 
 import es.codeurjc.springwebrestapi.models.Book;
 import es.codeurjc.springwebrestapi.models.Comment;
-import es.codeurjc.springwebrestapi.models.User;
 import es.codeurjc.springwebrestapi.services.BookService;
 import es.codeurjc.springwebrestapi.services.CommentService;
 import es.codeurjc.springwebrestapi.services.ImageService;
@@ -21,8 +20,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.multipart.MultipartFile;
-
-
 
 @Controller
 public class BookController {
@@ -58,9 +55,12 @@ public class BookController {
     @PostMapping("/book/new")
     public String newBook(Model model, Book book, MultipartFile image) throws IOException {
         bookService.save(book);
-        book.addCustomImageName(BOOKS_FOLDER);
+        if (image.getSize() != 0) {
+            book.setHasCustomImage(true);
+            imageService.saveImage(BOOKS_FOLDER, book.getId(), image);
+        }
+
         model.addAttribute("title", book.getTitle());
-        imageService.saveImage(BOOKS_FOLDER, book.getId(), image);
 
         return "saved_book";
     }

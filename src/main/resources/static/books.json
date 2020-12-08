@@ -1,0 +1,47 @@
+[
+    {
+        "title": "Clean Code",
+        "summary": "Code is clean if it can be understood easily – by everyone on the team. Clean code can be read and enhanced by a developer other than its original author. With understandability comes readability, changeability, extensibility and maintainability.",
+        "author": "Robert C. Martin",
+        "publisher": "Blue circle",
+        "publicationDate": "01-08-2008",
+        "rating": "5",
+        "hasCustomImage": true
+    },
+    {
+        "title": "Extreme Programming Explained",
+        "summary": "Software development projects can be fun, productive, and even daring. Yet they can consistently deliver value to a business and remain under control.",
+        "author": "Kent Beck",
+        "publisher": "Green circle",
+        "publicationDate": "16-01-2004",
+        "rating": "5",
+        "hasCustomImage": true
+    },
+    {
+        "title": "The Mythical Man Month",
+        "summary": "Few books on software project management have been as influential and timeless as The Mythical Man-Month. With a blend of software engineering facts and thought-provoking opinions, Fred Brooks offers insight for anyone managing complex projects. These essays draw from his experience as project manager for the IBM System/360 computer family and then for OS/360, its massive software system. ",
+        "author": "Frederick P. Brooks",
+        "publisher": "Yellow circle",
+        "publicationDate": "01-01-1995",
+        "rating": "3",
+        "hasCustomImage": true
+    },
+    {
+        "title": "Refactoring",
+        "summary": "Refactoring is about improving the design of existing code. It is the process of changing a software system in such a way that it does not alter the external behavior of the code, yet improves its internal structure. With refactoring you can even take a bad design and rework it into a good one.",
+        "author": "Martin Fowler / Kent Beck",
+        "publisher": "Blue circle",
+        "publicationDate": "01-10-1999",
+        "rating": "5",
+        "hasCustomImage": true
+    },
+    {
+        "title": "DDD Distilled",
+        "summary": "Domain-Driven Design (DDD) software modeling delivers powerful results in practice, not just in theory, which is why developers worldwide are rapidly moving to adopt it. Now, for the first time, there’s an accessible guide to the basics of DDD: What it is, what problems it solves, how it works, and how to quickly gain value from it.",
+        "author": "Vaughn Vernon",
+        "publisher": "Red circle",
+        "publicationDate": "02-12-2014",
+        "rating": "4",
+        "hasCustomImage": true
+    }
+]
