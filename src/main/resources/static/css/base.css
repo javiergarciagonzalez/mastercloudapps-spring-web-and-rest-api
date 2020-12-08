@@ -40,6 +40,17 @@ footer {
     margin-top: 150px;
 }
 
+.book__rating {
+    align-items: center;
+    color: #8b8e4a;
+    display: flex;
+    font-size: 1.75rem;
+    position: absolute;
+    right: .5rem;
+    text-shadow: 0px 0px 7px #FFEB3B;
+    top: .25rem;
+}
+
 /* Override Materialize CSS default styles */
 /* Normalize margins for paragraphs within form elements */
 form p {
