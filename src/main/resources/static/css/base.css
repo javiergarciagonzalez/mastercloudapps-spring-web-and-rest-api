@@ -9,6 +9,10 @@ footer {
     padding-bottom: 1rem;
 }
 
+.section:last-child {
+    margin-bottom: 2rem;
+}
+
 .main-container {
     flex: 1 0 auto;
     padding-top: 1rem;
