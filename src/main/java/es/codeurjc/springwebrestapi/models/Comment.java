@@ -38,6 +38,9 @@ public class Comment {
     public void setId(long id) {
         this.id = id;
     }
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public void setBookId(long bookId) {
         this.bookId = bookId;

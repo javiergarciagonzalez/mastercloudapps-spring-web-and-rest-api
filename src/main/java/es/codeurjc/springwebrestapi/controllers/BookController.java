@@ -82,8 +82,11 @@ public class BookController {
     @PostMapping("book/{id}/rate")
     public String rateBook(@PathVariable long id, Model model, Integer rating) {
         Book book = bookService.findById(id);
+        List<Comment> comments = commentService.findAllCommentsPerBook(id);
         book.setRating(rating);
         model.addAttribute("book", book);
+        model.addAttribute("comments", comments);
+        model.addAttribute("commentsCount", comments.size());
         return "book_details/base";
     }
 

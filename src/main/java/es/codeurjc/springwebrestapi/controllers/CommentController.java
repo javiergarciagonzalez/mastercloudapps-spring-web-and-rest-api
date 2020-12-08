@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import es.codeurjc.springwebrestapi.models.Book;
 import es.codeurjc.springwebrestapi.models.Comment;
+import es.codeurjc.springwebrestapi.models.User;
 import es.codeurjc.springwebrestapi.services.BookService;
 import es.codeurjc.springwebrestapi.services.CommentService;
 
@@ -25,11 +26,14 @@ public class CommentController {
     }
 
     @PostMapping("comment/new/{bookId}")
-    public String createComment(@PathVariable long id, Model model, Comment comment) {
+    public String createComment(@PathVariable long bookId, Model model, Comment comment, User user) {
+        comment.setUser(user);
         commentService.save(comment);
-        Book book = bookService.findById(id);
-        model.addAttribute("comment", comment);
+        Book book = bookService.findById(bookId);
+        List<Comment> allComments = commentService.findAllCommentsPerBook(bookId);
         model.addAttribute("book", book);
+        model.addAttribute("comments", allComments);
+        model.addAttribute("commentsCount", allComments.size());
 
         return "book_details/base";
     }
@@ -41,10 +45,8 @@ public class CommentController {
         model.addAttribute("book", book);
         commentService.deleteById(id);
         model.addAttribute("comments", allComments);
-        model.addAttribute("commentsCount", allComments.size());
 
         return "book_details/base";
     }
-
 
 }
