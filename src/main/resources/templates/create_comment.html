@@ -4,11 +4,11 @@
     <form class="col s12" action="/comment/new/{{book.id}}" method="POST">
         <div class="row">
             <div class="input-field col s4">
-                <input id="first_name" type="text" name="name" class="validate">
+                <input id="first_name" type="text" name="name" value="{{userSession.name}}" class="validate">
                 <label for="first_name">First Name</label>
             </div>
             <div class="input-field col s5">
-                <input id="last_name" type="text" name="lastName" class="validate">
+                <input id="last_name" type="text" name="lastName" value="{{userSession.lastName}}" class="validate">
                 <label for="last_name">Last Name</label>
             </div>
             <div class="input-field col s3">

@@ -2,6 +2,7 @@ package es.codeurjc.springwebrestapi.controllers;
 
 import es.codeurjc.springwebrestapi.models.Book;
 import es.codeurjc.springwebrestapi.models.Comment;
+import es.codeurjc.springwebrestapi.models.User;
 import es.codeurjc.springwebrestapi.services.BookService;
 import es.codeurjc.springwebrestapi.services.CommentService;
 import es.codeurjc.springwebrestapi.services.ImageService;
@@ -10,6 +11,8 @@ import es.codeurjc.springwebrestapi.services.PublisherService;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -64,11 +67,12 @@ public class BookController {
     }
 
     @GetMapping("/book/{id}")
-    public String getImage( Model model, @PathVariable int id) {
+    public String getImage( Model model, @PathVariable int id, HttpSession session) {
         Book book = bookService.findById(id);
         List<Comment> comments = commentService.findAllCommentsPerBook(id);
         model.addAttribute("book", book);
         model.addAttribute("comments", comments);
+        model.addAttribute("userSession", commentService.getSessionUser(session));
 
         return "book_details/base";
     }
@@ -79,12 +83,13 @@ public class BookController {
     }
 
     @PostMapping("book/{id}/rate")
-    public String rateBook(@PathVariable long id, Model model, Integer rating) {
+    public String rateBook(@PathVariable long id, Model model, Integer rating, HttpSession session) {
         Book book = bookService.findById(id);
         List<Comment> comments = commentService.findAllCommentsPerBook(id);
         book.setRating(rating);
         model.addAttribute("book", book);
         model.addAttribute("comments", comments);
+        model.addAttribute("userSession", commentService.getSessionUser(session));
         return "book_details/base";
     }
 

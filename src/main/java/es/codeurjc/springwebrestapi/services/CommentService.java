@@ -6,6 +6,8 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.atomic.AtomicLong;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Service;
 
 import es.codeurjc.springwebrestapi.models.Comment;
@@ -39,5 +41,13 @@ public class CommentService {
 
     public void deleteById(long id) {
        comments.remove(id);
+    }
+
+    public User getSessionUser(HttpSession session) {
+        User user = (User) session.getAttribute("user");
+        if (user == null) {
+            user = new User("","");
+        }
+        return user;
     }
 }
