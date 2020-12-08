@@ -1,0 +1,36 @@
+.comment-item {
+    display: flex;
+    justify-content: space-between;
+}
+
+.comment__header {
+    font-weight: bold;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.comment__date {
+    color: #8e8e8e;
+}
+
+.comment__content {
+    background-color: rgb(57 140 220 / 0.05);
+    padding: 0.5rem;
+}
+
+.comment__rating {
+    align-items: center;
+    display: flex;
+    padding: 0.5rem 0;
+}
+
+.comment-item__delete {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin: 1rem;
+}
+
+.comment__star {
+    color: rgb(227, 201, 9);
+}

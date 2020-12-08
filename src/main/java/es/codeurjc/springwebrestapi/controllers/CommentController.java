@@ -40,8 +40,8 @@ public class CommentController {
     @GetMapping("comment/delete/{id}/{bookId}")
     public String deleteComment(@PathVariable long id, @PathVariable long bookId, Model model) {
         Book book = bookService.findById(bookId);
-        List<Comment> allComments = commentService.findAllCommentsPerBook(bookId);
         commentService.deleteById(id);
+        List<Comment> allComments = commentService.findAllCommentsPerBook(bookId);
         model.addAttribute("book", book);
         model.addAttribute("comments", allComments);
 
