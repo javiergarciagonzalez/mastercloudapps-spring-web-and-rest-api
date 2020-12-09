@@ -9,17 +9,17 @@ public class BookDto {
     public interface Basic {}
 
     @JsonView(Basic.class)
-    public final Long id;
+    private final Long id;
 
     @JsonView(Basic.class)
-    public final String title;
+    private final String title;
 
-    public String summary;
-    public String author;
-    public String publisher;
-    public String publicationDate;
-    public Integer rating;
-    public List<Comment> comments;
+    private final String summary;
+    private final String author;
+    private final String publisher;
+    private final String publicationDate;
+    private final Integer rating;
+    private final List<Comment> comments;
 
     public BookDto(
         String title,
