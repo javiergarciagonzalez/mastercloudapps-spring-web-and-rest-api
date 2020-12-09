@@ -49,4 +49,17 @@ public class Comment {
     public Long getBookId() {
         return this.bookId;
     }
+
+    public Integer getRating() {
+        return this.rating;
+    }
+
+    public User getUser() {
+        return this.user;
+    }
+
+    public Long getId() {
+        return this.id;
+    }
+
 }
