@@ -1,6 +1,7 @@
 package es.codeurjc.springwebrestapi.models;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonView;
 
 public class BookDto {
@@ -18,8 +19,8 @@ public class BookDto {
     public String publisher;
     public String publicationDate;
     public Integer rating;
+    public List<Comment> comments;
 
-    @JsonCreator
     public BookDto(
         String title,
         String summary,
@@ -27,7 +28,8 @@ public class BookDto {
         String publisher,
         String publicationDate,
         Integer rating,
-        Long id
+        Long id,
+        List<Comment> comments
     ) {
         this.title = title;
         this.summary = summary;
@@ -36,6 +38,7 @@ public class BookDto {
         this.publicationDate = publicationDate;
         this.rating = rating;
         this.id = id;
+        this.comments = comments;
     }
 
     public String getTitle() {

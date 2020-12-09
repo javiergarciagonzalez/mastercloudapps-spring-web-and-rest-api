@@ -10,6 +10,14 @@ public class User {
         this.lastName = lastName;
     }
 
+    public String getName() {
+        return this.name;
+    }
+
+    public String getLastName() {
+        return this.lastName;
+    }
+
     @Override
     public String toString() {
         return this.name + " " + this.lastName;
