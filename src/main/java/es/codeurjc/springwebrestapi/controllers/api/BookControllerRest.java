@@ -1,5 +1,8 @@
 package es.codeurjc.springwebrestapi.controllers.api;
 
+import static org.springframework.web.servlet.support.ServletUriComponentsBuilder.fromCurrentRequest;
+
+import java.net.URI;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -9,6 +12,8 @@ import com.fasterxml.jackson.annotation.JsonView;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -48,6 +53,15 @@ public class BookControllerRest {
         }
 
         return ResponseEntity.notFound().build();
+    }
+
+    @PostMapping("/book")
+    public ResponseEntity<Book> createPost(@RequestBody Book book) {
+        bookService.save(book);
+        URI location = fromCurrentRequest().path("/{id}")
+        .buildAndExpand(book.getId()).toUri();
+
+        return ResponseEntity.created(location).body(book);
     }
 
     private List<BookDto> convertToDto(Collection<Book> books){
