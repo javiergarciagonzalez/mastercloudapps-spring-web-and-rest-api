@@ -66,7 +66,7 @@ public class BookController {
     }
 
     @GetMapping("/book/{id}")
-    public String getImage( Model model, @PathVariable int id, HttpSession session) {
+    public String getImage( Model model, @PathVariable Long id, HttpSession session) {
         Book book = bookService.findById(id);
         List<Comment> comments = commentService.findAllCommentsPerBook(id);
         model.addAttribute("book", book);

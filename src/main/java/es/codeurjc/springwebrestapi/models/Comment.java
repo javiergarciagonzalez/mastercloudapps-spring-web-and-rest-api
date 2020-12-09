@@ -7,12 +7,12 @@ public class Comment {
 
     private String content;
     private String publishedDate;
-    private long id;
+    private Long id;
     private Integer rating;
-    private long bookId;
+    private Long bookId;
     private User user;
 
-    public Comment(String content, Integer rating, User user, long bookId) {
+    public Comment(String content, Integer rating, User user, Long bookId) {
         this.content = content;
         this.rating = rating;
         this.user = user;

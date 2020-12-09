@@ -20,16 +20,16 @@ public class CommentService {
     private AtomicLong nextId = new AtomicLong();
 
     public CommentService() {
-        this.save(new Comment("asdsad", 3, new User("Javier", "garcia"), 0));
+        this.save(new Comment("asdsad", 3, new User("Javier", "garcia"), 0L));
     }
 
     public void save(Comment comment) {
-        long id = nextId.getAndIncrement();
+        Long id = nextId.getAndIncrement();
         comment.setId(id);
         comments.put(id, comment);
     }
 
-    public List<Comment> findAllCommentsPerBook(long bookId) {
+    public List<Comment> findAllCommentsPerBook(Long bookId) {
         List<Comment> allComments = new ArrayList<Comment>();
         comments.values().forEach(comment -> {
             if (comment.getBookId() == bookId) {
@@ -39,7 +39,7 @@ public class CommentService {
         return allComments;
     }
 
-    public void deleteById(long id) {
+    public void deleteById(Long id) {
        comments.remove(id);
     }
 
