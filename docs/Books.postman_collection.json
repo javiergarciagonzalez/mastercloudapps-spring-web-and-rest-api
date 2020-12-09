@@ -60,14 +60,15 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/api/book",
+					"raw": "localhost:8080/api/book/2",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
 						"api",
-						"book"
+						"book",
+						"2"
 					]
 				}
 			},
@@ -76,7 +77,7 @@
 		{
 			"name": "Create a comment associated to a book",
 			"request": {
-				"method": "DELETE",
+				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
