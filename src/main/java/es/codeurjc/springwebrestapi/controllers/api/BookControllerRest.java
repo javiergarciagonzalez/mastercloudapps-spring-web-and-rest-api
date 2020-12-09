@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,6 +24,7 @@ import es.codeurjc.springwebrestapi.models.Comment;
 import es.codeurjc.springwebrestapi.models.mappers.BookMapper;
 import es.codeurjc.springwebrestapi.services.BookService;
 import es.codeurjc.springwebrestapi.services.CommentService;
+import io.swagger.models.Response;
 
 @RestController
 @RequestMapping("/api")
@@ -56,10 +58,25 @@ public class BookControllerRest {
     }
 
     @PostMapping("/book")
-    public ResponseEntity<Book> createPost(@RequestBody Book book) {
+    public ResponseEntity<Object> createPost(@RequestBody Book book) {
         bookService.save(book);
-        URI location = fromCurrentRequest().path("/{id}")
-        .buildAndExpand(book.getId()).toUri();
+        URI location = fromCurrentRequest().path("/{id}").buildAndExpand(book.getId()).toUri();
+
+        return ResponseEntity.created(location).body(book);
+    }
+
+    @PostMapping("/comment/{bookId}")
+    public ResponseEntity<Object> createComment(@RequestBody Comment comment, @PathVariable Long bookId) {
+        Book book = bookService.findById(bookId);
+
+        if (book == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        URI location = fromCurrentRequest().build().toUri();
+        comment.setBookId(bookId);
+        this.commentService.save(comment);
+
 
         return ResponseEntity.created(location).body(book);
     }
