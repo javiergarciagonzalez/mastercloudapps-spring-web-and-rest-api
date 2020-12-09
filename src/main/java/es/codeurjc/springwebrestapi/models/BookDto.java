@@ -68,4 +68,8 @@ public class BookDto {
     public Integer getRating() {
         return this.rating;
     }
+
+    public List<Comment> getCommets() {
+        return this.comments;
+    }
 }
