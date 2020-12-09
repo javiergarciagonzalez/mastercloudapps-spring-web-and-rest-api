@@ -1,6 +1,7 @@
 package es.codeurjc.springwebrestapi.services;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
@@ -18,6 +19,10 @@ public class CommentService {
 
     private ConcurrentMap<Long, Comment> comments = new ConcurrentHashMap<>();
     private AtomicLong nextId = new AtomicLong();
+
+    public CommentService() {
+        this.preloadComments();
+    }
 
     public void save(Comment comment) {
         Long id = nextId.getAndIncrement();
@@ -49,5 +54,17 @@ public class CommentService {
             user = new User("","");
         }
         return user;
+    }
+
+    private void preloadComments() {
+        User user = new User("John", "Doe");
+        String content = "My life changed after reading this book, now I do not go out for social plans that often anymore.";
+        Integer rating = 4;
+        Long[] bookIds = {0L,1L,2L,3L,4L};
+
+        Arrays.asList(bookIds).forEach(id -> {
+            Comment comment = new Comment(content, rating, user, id);
+            this.save(comment);
+        });
     }
 }

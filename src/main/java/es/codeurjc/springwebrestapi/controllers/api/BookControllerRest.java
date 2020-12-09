@@ -25,7 +25,6 @@ import es.codeurjc.springwebrestapi.models.Comment;
 import es.codeurjc.springwebrestapi.models.mappers.BookMapper;
 import es.codeurjc.springwebrestapi.services.BookService;
 import es.codeurjc.springwebrestapi.services.CommentService;
-import io.swagger.models.Response;
 
 @RestController
 @RequestMapping("/api")
