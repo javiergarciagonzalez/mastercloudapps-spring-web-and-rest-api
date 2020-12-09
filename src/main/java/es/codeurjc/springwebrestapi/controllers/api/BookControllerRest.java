@@ -22,9 +22,15 @@ import org.springframework.web.bind.annotation.RestController;
 import es.codeurjc.springwebrestapi.models.Book;
 import es.codeurjc.springwebrestapi.models.BookDto;
 import es.codeurjc.springwebrestapi.models.Comment;
+import es.codeurjc.springwebrestapi.models.BookDto.BasicDto;
 import es.codeurjc.springwebrestapi.models.mappers.BookMapper;
 import es.codeurjc.springwebrestapi.services.BookService;
 import es.codeurjc.springwebrestapi.services.CommentService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 
 @RestController
 @RequestMapping("/api")
@@ -40,23 +46,65 @@ public class BookControllerRest {
         this.commentService = commentService;
     }
 
-    @JsonView(BookDto.Basic.class)
+    @Operation(summary = "Get all books and their id")
+    @ApiResponses(value = {
+        @ApiResponse(
+        responseCode = "200", description = "Found all books", content = {@Content(
+        mediaType = "application/json",
+        schema = @Schema(implementation = BasicDto.class) )}
+          ),
+          @ApiResponse(
+        responseCode = "404", description = "Books not found", content = @Content
+        )
+    })
+    @JsonView(BasicDto.class)
     @GetMapping("/books")
-    public List<BookDto> getBooks() {
-        return this.convertToDto(this.bookService.findAll());
+    public ResponseEntity<List<BookDto>> getBooks() {
+        List<BookDto> books = this.convertToDto(this.bookService.findAll());
+        if (books == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(books);
     }
 
+    @Operation(summary = "Get a specific book by providing its id")
+    @ApiResponses(value = {
+        @ApiResponse(
+        responseCode = "200", description = "Found the book", content = {@Content(
+        mediaType = "application/json",
+        schema = @Schema(implementation = BookDto.class) )}
+          ),
+          @ApiResponse(
+        responseCode = "404", description = "Book not found", content = @Content
+        )
+    })
     @GetMapping("/book/{id}")
     public ResponseEntity<BookDto> getBook(@PathVariable Long id) {
         BookDto book = this.convertToDto(bookService.findById(id));
 
-        if (book != null) {
-            return ResponseEntity.ok(book);
+        if (book == null) {
+            return ResponseEntity.notFound().build();
         }
 
-        return ResponseEntity.notFound().build();
+        return ResponseEntity.ok(book);
     }
 
+    @Operation(summary = "Create a book")
+    @io.swagger.v3.oas.annotations.parameters.RequestBody(
+        description = "Create Book object",
+        required = true,
+        content = @Content( schema = @Schema(implementation = BookDto.class))
+    )
+    @ApiResponses(value = {
+        @ApiResponse(
+        responseCode = "200", description = "Found the book", content = {@Content(
+        mediaType = "application/json",
+        schema = @Schema(implementation = BasicDto.class) )}
+          ),
+          @ApiResponse(
+        responseCode = "404", description = "Book not found", content = @Content
+        )
+    })
     @PostMapping("/book")
     public ResponseEntity<Object> createPost(@RequestBody Book book) {
         bookService.save(book);
@@ -64,12 +112,27 @@ public class BookControllerRest {
 
         return ResponseEntity.created(location).body(book);
     }
-
+    @Operation(summary = "Create a comment for a specific book")
+    @io.swagger.v3.oas.annotations.parameters.RequestBody(
+        description = "Create Comment",
+        required = true,
+        content = @Content( schema = @Schema(implementation = Comment.class))
+    )
+    @ApiResponses(value = {
+        @ApiResponse(
+        responseCode = "200", description = "A comment was created", content = {@Content(
+        mediaType = "application/json",
+        schema = @Schema(implementation = BookDto.class) )}
+          ),
+          @ApiResponse(
+        responseCode = "404", description = "Book was not found", content = @Content
+        )
+    })
     @PostMapping("/comment/{bookId}")
     public ResponseEntity<Object> createComment(@RequestBody Comment comment, @PathVariable Long bookId) {
         Book book = bookService.findById(bookId);
 
-        if (book == null) {
+        if (book == null || commentService.isAnyFieldMissing(comment)) {
             return ResponseEntity.notFound().build();
         }
 
@@ -81,6 +144,16 @@ public class BookControllerRest {
         return ResponseEntity.created(location).body(book);
     }
 
+    @Operation(summary = "Delete a comment")
+    @ApiResponses(value = {
+        @ApiResponse(
+        responseCode = "200", description = "A comment was created", content = {@Content(
+        mediaType = "application/json")}
+          ),
+          @ApiResponse(
+        responseCode = "404", description = "Comment was not found", content = @Content
+        )
+    })
     @DeleteMapping("/comment/{id}")
     public ResponseEntity<Object> deleteComment(@PathVariable Long id) throws IOException {
         Comment comment = commentService.findById(id);

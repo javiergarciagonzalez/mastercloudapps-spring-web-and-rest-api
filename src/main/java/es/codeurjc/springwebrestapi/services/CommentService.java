@@ -56,6 +56,13 @@ public class CommentService {
         return user;
     }
 
+    public Boolean isAnyFieldMissing(Comment comment) {
+        return
+            comment.getContent() == null||
+            comment.getUser() == null||
+            comment.getRating() == null;
+    }
+
     private void preloadComments() {
         User user = new User("John", "Doe");
         String content = "My life changed after reading this book, now I do not go out for social plans that often anymore.";

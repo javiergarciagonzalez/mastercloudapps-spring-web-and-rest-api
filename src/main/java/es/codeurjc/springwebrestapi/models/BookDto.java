@@ -2,16 +2,17 @@ package es.codeurjc.springwebrestapi.models;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
 
 public class BookDto {
 
-    public interface Basic {}
+    public interface BasicDto {}
 
-    @JsonView(Basic.class)
+    @JsonView(BasicDto.class)
     private final Long id;
 
-    @JsonView(Basic.class)
+    @JsonView(BasicDto.class)
     private final String title;
 
     private final String summary;
@@ -49,6 +50,7 @@ public class BookDto {
         return this.summary;
     }
 
+    @JsonIgnore
     public Long getId() {
         return this.id;
     }
@@ -69,6 +71,7 @@ public class BookDto {
         return this.rating;
     }
 
+    @JsonIgnore
     public List<Comment> getCommets() {
         return this.comments;
     }

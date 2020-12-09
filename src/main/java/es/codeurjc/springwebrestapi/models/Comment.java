@@ -3,14 +3,19 @@ package es.codeurjc.springwebrestapi.models;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class Comment {
 
     private String content;
-    private String publishedDate;
-    private Long id;
-    private Integer rating;
-    private Long bookId;
     private User user;
+    private Integer rating;
+    @JsonIgnore
+    private String publishedDate;
+    @JsonIgnore
+    private Long id;
+    @JsonIgnore
+    private Long bookId;
 
     public Comment(String content, Integer rating, User user, Long bookId) {
         this.content = content;
