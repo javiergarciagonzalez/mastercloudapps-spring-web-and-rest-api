@@ -1,7 +1,6 @@
 package es.codeurjc.springwebrestapi.models;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonView;
 
 public class BookDto {
@@ -22,22 +21,13 @@ public class BookDto {
 
     @JsonCreator
     public BookDto(
-        @JsonProperty("title") String title,
-        @JsonProperty("id") Long id
-    ) {
-        this.title = title;
-        this.id = id;
-    }
-
-    @JsonCreator
-    public BookDto(
-        @JsonProperty("title") String title,
-        @JsonProperty("summary") String summary,
-        @JsonProperty("author") String author,
-        @JsonProperty("publisher") String publisher,
-        @JsonProperty("publicationDate") String publicationDate,
-        @JsonProperty("rating") Integer rating,
-        @JsonProperty("id") Long id
+        String title,
+        String summary,
+        String author,
+        String publisher,
+        String publicationDate,
+        Integer rating,
+        Long id
     ) {
         this.title = title;
         this.summary = summary;
