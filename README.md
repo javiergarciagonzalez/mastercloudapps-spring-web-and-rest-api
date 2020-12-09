@@ -12,10 +12,10 @@ See `docs/Books.postman_collection.json` in the docs folder of this project, [he
 
 ## Overview
 ### Homepage
-![homepage](https://github.com/javiergarciagonzalez/mastercloudapps-spring-web-and-rest-api/tree/main/docs/readme-images/homepage.png?raw=true)
+![homepage](https://raw.githubusercontent.com/javiergarciagonzalez/mastercloudapps-spring-web-and-rest-api/main/docs/readme-images/homepage.png)
 
 ### Book details page
-![homepage](https://github.com/javiergarciagonzalez/mastercloudapps-spring-web-and-rest-api/tree/main/docs/readme-images/book_details.png?raw=true)
+![homepage](https://raw.githubusercontent.com/javiergarciagonzalez/mastercloudapps-spring-web-and-rest-api/main/docs/readme-images/book_details.png)
 
 ### Create a new book
-![homepage](https://github.com/javiergarciagonzalez/mastercloudapps-spring-web-and-rest-api/tree/main/docs/readme-images/create_book.png?raw=true)
+![homepage](https://raw.githubusercontent.com/javiergarciagonzalez/mastercloudapps-spring-web-and-rest-api/main/docs/readme-images/create_book.png)
