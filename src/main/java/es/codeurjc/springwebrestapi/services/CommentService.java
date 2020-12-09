@@ -25,6 +25,10 @@ public class CommentService {
         comments.put(id, comment);
     }
 
+    public Comment findById(Long id) {
+        return this.comments.get(id);
+    }
+
     public List<Comment> findAllCommentsPerBook(Long bookId) {
         List<Comment> allComments = new ArrayList<Comment>();
         comments.values().forEach(comment -> {

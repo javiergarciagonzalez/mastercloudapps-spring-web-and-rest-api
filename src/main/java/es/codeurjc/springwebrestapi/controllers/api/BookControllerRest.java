@@ -2,6 +2,7 @@ package es.codeurjc.springwebrestapi.controllers.api;
 
 import static org.springframework.web.servlet.support.ServletUriComponentsBuilder.fromCurrentRequest;
 
+import java.io.IOException;
 import java.net.URI;
 import java.util.Collection;
 import java.util.List;
@@ -79,6 +80,18 @@ public class BookControllerRest {
 
 
         return ResponseEntity.created(location).body(book);
+    }
+
+    @DeleteMapping("/comment/{id}")
+    public ResponseEntity<Object> deleteComment(@PathVariable Long id) throws IOException {
+        Comment comment = commentService.findById(id);
+
+        if (comment == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        commentService.deleteById(id);
+        return ResponseEntity.noContent().build();
     }
 
     private List<BookDto> convertToDto(Collection<Book> books){
