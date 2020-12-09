@@ -44,8 +44,20 @@ public class Book {
         return this.id;
     }
 
-    public void setHasCustomImage(Boolean value) {
-        this.hasCustomImage = value;
+    public String getSummary() {
+        return this.summary;
+    }
+
+    public String getAuthor() {
+        return this.author;
+    }
+
+    public String getPublisher() {
+        return this.publisher;
+    }
+
+    public String getPublicationDate() {
+        return this.publicationDate;
     }
 
     public Boolean getHasCustomImage() {
@@ -54,6 +66,10 @@ public class Book {
 
     public Integer getRating() {
         return this.rating;
+    }
+
+    public void setHasCustomImage(Boolean value) {
+        this.hasCustomImage = value;
     }
 
     public void setRating(Integer rating) {
