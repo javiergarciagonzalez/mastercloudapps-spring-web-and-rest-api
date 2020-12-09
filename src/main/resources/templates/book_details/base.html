@@ -1,7 +1,7 @@
 {{>header/base}}
     <h2>{{book.title}}</h2>
     {{#book.hasCustomImage}}
-        <img class="activator" src="/book/{{id}}/image">
+        <img class="book-details__image activator" src="/book/{{book.id}}/image">
     {{/book.hasCustomImage}}
     <div class="pic"></div>
     <div class="author">
